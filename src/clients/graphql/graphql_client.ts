@@ -40,13 +40,7 @@ export class GraphqlClient {
 
     const path = `${this.baseApiPath}/${Context.API_VERSION}/graphql.json`;
 
-    let dataType: DataType.GraphQL | DataType.JSON;
-
-    if (typeof params.data === 'object') {
-      dataType = DataType.JSON;
-    } else {
-      dataType = DataType.GraphQL;
-    }
+    const dataType = typeof params.data === 'object' ? dataType = DataType.JSON : dataType = DataType.GraphQL;
 
     return this.client.post({path, type: dataType, ...params});
   }
